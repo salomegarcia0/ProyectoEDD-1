@@ -64,4 +64,19 @@ public class ListaSimple {
         }
         return tmp.getData();
     }
+    
+    public String Transformar() {
+        if (!this.isEmpty()) {
+            Nodo aux = this.first;
+            StringBuilder expresion = new StringBuilder();
+            for (int i = 0; i < size; i++) {
+                // Aquí deberías evitar la recursión infinita, mostrando solo lo necesario
+                expresion.append(aux.getData().toString()).append("\n");
+                aux = aux.getnext();
+            }
+            return expresion.toString();
+        }
+        return "Lista vacia";
+    }
+    
 }

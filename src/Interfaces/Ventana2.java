@@ -28,47 +28,45 @@ public class Ventana2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        fondo = new javax.swing.JLabel();
-        cargarLinea1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        agregarLinea = new javax.swing.JLabel();
         colocarSucursal = new javax.swing.JLabel();
         verCobertura = new javax.swing.JLabel();
         salir = new javax.swing.JLabel();
+        cargarRed = new javax.swing.JLabel();
+        mostrarGrafo = new javax.swing.JLabel();
+        establecerT = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setMinimumSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
-        fondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fondo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                fondoMouseClicked(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1284, 1284, 1284))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
-        cargarLinea1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarLinea1.addMouseListener(new java.awt.event.MouseAdapter() {
+        agregarLinea.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarLinea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargarLinea1MouseClicked(evt);
+                agregarLineaMouseClicked(evt);
             }
         });
-        getContentPane().add(cargarLinea1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 380, 80));
+        getContentPane().add(agregarLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 310, 60));
 
         colocarSucursal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         colocarSucursal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +74,7 @@ public class Ventana2 extends javax.swing.JFrame {
                 colocarSucursalMouseClicked(evt);
             }
         });
-        getContentPane().add(colocarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 380, 80));
+        getContentPane().add(colocarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 310, 60));
 
         verCobertura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verCobertura.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,7 +82,7 @@ public class Ventana2 extends javax.swing.JFrame {
                 verCoberturaMouseClicked(evt);
             }
         });
-        getContentPane().add(verCobertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 380, 80));
+        getContentPane().add(verCobertura, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 310, 60));
 
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,7 +90,16 @@ public class Ventana2 extends javax.swing.JFrame {
                 salirMouseClicked(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 380, 80));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 320, 70));
+
+        cargarRed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cargarRedMouseClicked(evt);
+            }
+        });
+        getContentPane().add(cargarRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 300, 60));
+        getContentPane().add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 310, 60));
+        getContentPane().add(establecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 300, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,22 +108,25 @@ public class Ventana2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_colocarSucursalMouseClicked
 
-    private void fondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fondoMouseClicked
+    private void agregarLineaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarLineaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_fondoMouseClicked
-
-    private void cargarLinea1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarLinea1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cargarLinea1MouseClicked
+    }//GEN-LAST:event_agregarLineaMouseClicked
 
     private void verCoberturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verCoberturaMouseClicked
-        // TODO add your handling code here:
+        Ventana3 v3 = new Ventana3();
+        v3.setLocationRelativeTo(null);
+        v3.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_verCoberturaMouseClicked
 
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
         this.dispose();
         JOptionPane.showMessageDialog(null, "Gracias, hasta pronto!");
     }//GEN-LAST:event_salirMouseClicked
+
+    private void cargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarRedMouseClicked
+        
+    }//GEN-LAST:event_cargarRedMouseClicked
 
     /**
      * @param args the command line arguments
@@ -154,10 +164,14 @@ public class Ventana2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cargarLinea1;
+    private javax.swing.JLabel agregarLinea;
+    private javax.swing.JLabel cargarRed;
     private javax.swing.JLabel colocarSucursal;
-    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel establecerT;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel mostrarGrafo;
     private javax.swing.JLabel salir;
     private javax.swing.JLabel verCobertura;
     // End of variables declaration//GEN-END:variables
