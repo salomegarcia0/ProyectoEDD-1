@@ -92,28 +92,51 @@ public class Ventana2 extends javax.swing.JFrame {
         });
         getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 320, 70));
 
+        cargarRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cargarRed.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cargarRedMouseClicked(evt);
             }
         });
         getContentPane().add(cargarRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 300, 60));
+
+        mostrarGrafo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mostrarGrafo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrarGrafoMouseClicked(evt);
+            }
+        });
         getContentPane().add(mostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 310, 60));
+
+        establecerT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        establecerT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                establecerTMouseClicked(evt);
+            }
+        });
         getContentPane().add(establecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 300, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void colocarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colocarSucursalMouseClicked
-        // TODO add your handling code here:
+        ColocarSucursal cs = new ColocarSucursal();
+        cs.setLocationRelativeTo(null);
+        cs.setResizable(false);
+        this.dispose();
+        cs.setVisible(true);
     }//GEN-LAST:event_colocarSucursalMouseClicked
 
     private void agregarLineaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarLineaMouseClicked
-        // TODO add your handling code here:
+        AgregarLinea al = new AgregarLinea();
+        al.setLocationRelativeTo(null);
+        al.setResizable(false);
+        this.dispose();
+        al.setVisible(true);
     }//GEN-LAST:event_agregarLineaMouseClicked
 
     private void verCoberturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verCoberturaMouseClicked
-        Ventana3 v3 = new Ventana3();
+        VerCobertura v3 = new VerCobertura();
         v3.setLocationRelativeTo(null);
         v3.setVisible(true);
         this.dispose();
@@ -125,8 +148,29 @@ public class Ventana2 extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void cargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarRedMouseClicked
-        
+        CargarRed cr = new CargarRed();
+        cr.setLocationRelativeTo(null);
+        this.dispose();
+        cr.setVisible(true);
+        cr.setResizable(false);
     }//GEN-LAST:event_cargarRedMouseClicked
+
+    private void mostrarGrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarGrafoMouseClicked
+        MostrarGrafo mg = new MostrarGrafo();
+        mg.setLocationRelativeTo(null);
+        mg.setResizable(false);
+        this.dispose();
+        mg.setVisible(true);
+        
+    }//GEN-LAST:event_mostrarGrafoMouseClicked
+
+    private void establecerTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_establecerTMouseClicked
+        EstablecerT et = new EstablecerT();
+        et.setLocationRelativeTo(null);
+        et.setResizable(false);
+        this.dispose();
+        et.setVisible(true);
+    }//GEN-LAST:event_establecerTMouseClicked
 
     /**
      * @param args the command line arguments
