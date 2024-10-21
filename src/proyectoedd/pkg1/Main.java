@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Ventana1 v1 = new Ventana1();
         v1.setLocationRelativeTo(null);
+        v1.setResizable(false);
         v1.setVisible(true);
     }
     

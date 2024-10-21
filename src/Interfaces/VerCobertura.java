@@ -29,6 +29,8 @@ public class VerCobertura extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         BFS = new javax.swing.JLabel();
         DFS = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        Menu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -58,33 +60,68 @@ public class VerCobertura extends javax.swing.JFrame {
         });
         getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 380, 130));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(43, 43, 43))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        Menu.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        Menu.setForeground(new java.awt.Color(255, 255, 255));
+        Menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Menu.setText("MENÚ");
+        Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+        jPanel2.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 360, 60));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Busqueda.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Boton para iniciar el BFS
+     * @param evt 
+     */
     private void BFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFSMouseClicked
-        // TODO add your handling code here:
+        CoberturaBFS bfs = new CoberturaBFS();
+        bfs.setLocationRelativeTo(null);
+        bfs.setResizable(false);
+        this.dispose();
+        bfs.setVisible(true);
+        
     }//GEN-LAST:event_BFSMouseClicked
-
+    
+    /**
+     * Boton para iniciar el DFS
+     * @param evt 
+     */
     private void DFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DFSMouseClicked
-        // TODO add your handling code here:
+        CoberturaDFS dfs= new CoberturaDFS();
+        dfs.setLocationRelativeTo(null);
+        dfs.setResizable(false);
+        this.dispose();
+        dfs.setVisible(true);
     }//GEN-LAST:event_DFSMouseClicked
+    /**
+     * Boton para ir a la ventana del menu
+     * @param evt 
+     */
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        Ventana2 v2 = new Ventana2();
+        v2.setLocationRelativeTo(null);
+        v2.setResizable(false);
+        v2.setVisible(true);
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,8 +162,10 @@ public class VerCobertura extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BFS;
     private javax.swing.JLabel DFS;
+    private javax.swing.JLabel Menu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

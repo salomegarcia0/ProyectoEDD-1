@@ -45,7 +45,7 @@ public class Ventana2 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,7 +118,11 @@ public class Ventana2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Boton para ir a la ventana de colocar sucursal
+     * @param evt 
+     */
     private void colocarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_colocarSucursalMouseClicked
         ColocarSucursal cs = new ColocarSucursal();
         cs.setLocationRelativeTo(null);
@@ -126,7 +130,11 @@ public class Ventana2 extends javax.swing.JFrame {
         this.dispose();
         cs.setVisible(true);
     }//GEN-LAST:event_colocarSucursalMouseClicked
-
+    
+    /**
+     * Boton para ir a la ventana de agregar linea
+     * @param evt 
+     */
     private void agregarLineaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarLineaMouseClicked
         AgregarLinea al = new AgregarLinea();
         al.setLocationRelativeTo(null);
@@ -134,19 +142,31 @@ public class Ventana2 extends javax.swing.JFrame {
         this.dispose();
         al.setVisible(true);
     }//GEN-LAST:event_agregarLineaMouseClicked
-
+    
+    /**
+     * Boton para ir a la ventana de ver Cobertura
+     * @param evt 
+     */
     private void verCoberturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verCoberturaMouseClicked
         VerCobertura v3 = new VerCobertura();
         v3.setLocationRelativeTo(null);
         v3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_verCoberturaMouseClicked
-
+    
+    /**
+     * Boton para salir del programa
+     * @param evt 
+     */
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
         this.dispose();
         JOptionPane.showMessageDialog(null, "Gracias, hasta pronto!");
     }//GEN-LAST:event_salirMouseClicked
-
+    
+    /**
+     * Boton para ir a la ventana de cargar red
+     * @param evt 
+     */
     private void cargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarRedMouseClicked
         CargarRed cr = new CargarRed();
         cr.setLocationRelativeTo(null);
@@ -154,7 +174,11 @@ public class Ventana2 extends javax.swing.JFrame {
         cr.setVisible(true);
         cr.setResizable(false);
     }//GEN-LAST:event_cargarRedMouseClicked
-
+    
+    /**
+     * Boton para ir a la ventana de cargar grafo
+     * @param evt 
+     */
     private void mostrarGrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarGrafoMouseClicked
         MostrarGrafo mg = new MostrarGrafo();
         mg.setLocationRelativeTo(null);
@@ -163,7 +187,11 @@ public class Ventana2 extends javax.swing.JFrame {
         mg.setVisible(true);
         
     }//GEN-LAST:event_mostrarGrafoMouseClicked
-
+    
+    /**
+     * Boton para ir a la ventana de establecer T
+     * @param evt 
+     */
     private void establecerTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_establecerTMouseClicked
         EstablecerT et = new EstablecerT();
         et.setLocationRelativeTo(null);

@@ -65,6 +65,16 @@ public class ListaSimple {
         return tmp.getData();
     }
     
-    
-    
+    public boolean buscar(Object referencia) {
+        Nodo actual = this.first;
+        boolean encontrado = false;
+        while (actual != null && encontrado != true) {
+            if (referencia == actual.getData()) {
+                encontrado = true;
+            } else {
+                actual = actual.getnext();
+            }
+        }
+        return encontrado;
+    }  
 }

@@ -98,7 +98,7 @@ public class Estacion {
 
         //Mostrar nombres de las estaciones peatonales
         if (this.peaton != null) {
-            sb.append("\nESTACIONES PEATONALES: ");
+            sb.append("\nEstaciones Peatonales ");
             sb.append(this.peaton.getNombreEstacion());
         }
 
