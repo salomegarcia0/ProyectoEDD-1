@@ -86,7 +86,7 @@ public class Funciones {
         // Capturamos cualquier excepción de tipo IOException que pueda ocurrir al leer el archivo
         } catch (IOException e) {
             // Imprimimos la traza de la excepción para ayudar en la depuración
-           // e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
