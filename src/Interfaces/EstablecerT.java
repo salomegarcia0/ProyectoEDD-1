@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+//import Funciones.Validaciones;
+import static Interfaces.CargarRed.t;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author salom
@@ -15,6 +19,8 @@ public class EstablecerT extends javax.swing.JFrame {
      */
     public EstablecerT() {
         initComponents();
+        String showT = Integer.toString(t);
+        tActual.setText(showT);
     }
 
     /**
@@ -30,9 +36,9 @@ public class EstablecerT extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tActual = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Tnuevo = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        establecerT = new javax.swing.JLabel();
         Menu = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -65,20 +71,25 @@ public class EstablecerT extends javax.swing.JFrame {
         jLabel5.setText("Ingrese el nuevo valor de t:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 270, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 212, 390, 30));
+        Tnuevo.setBackground(new java.awt.Color(255, 255, 255));
+        Tnuevo.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(Tnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 212, 390, 30));
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ESTABLECER");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 40));
+        establecerT.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        establecerT.setForeground(new java.awt.Color(255, 255, 255));
+        establecerT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        establecerT.setText("ESTABLECER");
+        establecerT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        establecerT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                establecerTMouseClicked(evt);
+            }
+        });
+        jPanel2.add(establecerT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 180, 40));
 
@@ -114,12 +125,25 @@ public class EstablecerT extends javax.swing.JFrame {
      * @param evt 
      */
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        Ventana2 v2 = new Ventana2();
+        Menu v2 = new Menu();
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
+
+    private void establecerTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_establecerTMouseClicked
+        String tStr = Tnuevo.getText();
+        //Validaciones val = new Validaciones();
+
+        /**if (val.validarEntrada(tStr) != -1) {
+            t = Integer.parseInt(tStr);
+            tActual.setText(String.valueOf(t));
+            JOptionPane.showMessageDialog(null, "T actualizado");
+        } else {
+            JOptionPane.showMessageDialog(null, "No es valido");
+        }*/
+    }//GEN-LAST:event_establecerTMouseClicked
 
     /**
      * @param args the command line arguments
@@ -158,15 +182,15 @@ public class EstablecerT extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
+    private javax.swing.JTextField Tnuevo;
+    private javax.swing.JLabel establecerT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel tActual;
     // End of variables declaration//GEN-END:variables
 }

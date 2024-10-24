@@ -4,16 +4,32 @@
  */
 package Interfaces;
 
+import EDD.ListaSimple;
+//import Funciones.BFS;
+//import Funciones.Funciones;
+import static Interfaces.CargarRed.grafoApp;
+import static Interfaces.CargarRed.t;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author salom
  */
 public class CoberturaBFS extends javax.swing.JFrame {
-
+    
+    DefaultComboBoxModel estaciones = new DefaultComboBoxModel();
+    //Funciones func = new Funciones();
     /**
      * Creates new form BFS
      */
     public CoberturaBFS() {
+        /**estaciones.removeAllElements();
+        if(!func.listarEstacionesConSucursal(grafoApp).isEmpty()){
+            ListaSimple nombres = func.listarEstacionesConSucursal(grafoApp);
+            for (int i = 0; i < nombres.getSize(); i++) {
+                estaciones.addElement(nombres.getValor(i));
+            }
+        }**/
         initComponents();
     }
 
@@ -32,7 +48,7 @@ public class CoberturaBFS extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        verBFS = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -67,26 +83,36 @@ public class CoberturaBFS extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("ESCOJA LA CIUDAD DE INICIO:");
+        jLabel4.setText("ESCOJA LA ESTACIÓN DE INICIO:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 420, -1));
 
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(estaciones);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(172, 280, 270, 40));
 
         jPanel3.setBackground(new java.awt.Color(102, 0, 153));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setBackground(new java.awt.Color(102, 0, 153));
-        jLabel5.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("VER COBERTURA");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 40));
+        verBFS.setBackground(new java.awt.Color(102, 0, 153));
+        verBFS.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        verBFS.setForeground(new java.awt.Color(255, 255, 255));
+        verBFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verBFS.setText("VER COBERTURA");
+        verBFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verBFS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verBFSMouseClicked(evt);
+            }
+        });
+        jPanel3.add(verBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 40));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 190, 40));
 
@@ -105,11 +131,22 @@ public class CoberturaBFS extends javax.swing.JFrame {
      * @param evt 
      */
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        Ventana2 v2 = new Ventana2();
+        Menu v2 = new Menu();
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
     }//GEN-LAST:event_MenuMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void verBFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verBFSMouseClicked
+        /**BFS bfs = new BFS(t);
+        String nombreEstacion = (String) estaciones.getSelectedItem();
+        bfs.coberturaEstacion(grafoApp.encontrarEstacion(nombreEstacion));
+        */
+    }//GEN-LAST:event_verBFSMouseClicked
 
     /**
      * @param args the command line arguments
@@ -153,9 +190,9 @@ public class CoberturaBFS extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel verBFS;
     // End of variables declaration//GEN-END:variables
 }

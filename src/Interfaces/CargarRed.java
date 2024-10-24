@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import EDD.Grafo;
+//import Funciones.Funciones;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,7 +18,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author salom
  */
 public class CargarRed extends javax.swing.JFrame {
-
+    public static Grafo grafoApp = new Grafo();
+    public static int t = 3;
+    
     /**
      * Creates new form CargarRed
      */
@@ -167,11 +171,22 @@ public class CargarRed extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarMouseClicked
 
     private void cargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarRedMouseClicked
-        Ventana2 v2 = new Ventana2();
-        v2.setLocationRelativeTo(null);
-        v2.setResizable(false);
-        v2.setVisible(true);
-        this.dispose();
+        /**if (!mostrar.getText().isEmpty()) {
+            Funciones func  = new Funciones();
+            func.cargarRedTransporte(ruta.getText());
+            
+            grafoApp.setEstaciones(func.getEstaciones());
+            
+            grafoApp.mostrarGrafo();
+            
+            
+            IniciarT iniciarT = new IniciarT();
+            this.setVisible(false);
+            
+            iniciarT.setLocationRelativeTo(null);
+            iniciarT.setResizable(false);
+            iniciarT.setVisible(true);
+        }**/
     }//GEN-LAST:event_cargarRedMouseClicked
 
     /**

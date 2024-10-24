@@ -4,17 +4,34 @@
  */
 package Interfaces;
 
+import EDD.ListaSimple;
+//import Funciones.DFS;
+//import Funciones.Funciones;
+import static Interfaces.CargarRed.grafoApp;
+import static Interfaces.CargarRed.t;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author salom
  */
 public class CoberturaDFS extends javax.swing.JFrame {
-
+    
+    DefaultComboBoxModel estacionesDFS = new DefaultComboBoxModel();
+    //Funciones fun = new Funciones();
     /**
      * Creates new form DFS
      */
     public CoberturaDFS() {
         initComponents();
+        /**estacionesDFS.removeAllElements();
+        
+        if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
+            ListaSimple nombres = fun.listarEstacionesConSucursal(grafoApp);
+            for (int i = 0; i < nombres.getSize(); i++) {
+                estacionesDFS.addElement(nombres.getValor(i));
+            }
+        }*/
     }
 
     /**
@@ -28,9 +45,9 @@ public class CoberturaDFS extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        estaciones = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        verDFS = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -48,32 +65,37 @@ public class CoberturaDFS extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ESCOJA CIUDAD DE INICIO:");
+        jLabel3.setText("ESCOJA ESTACIÓN DE INICIO:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 330, 30));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 260, 50));
+        estaciones.setBackground(new java.awt.Color(255, 255, 255));
+        estaciones.setModel(estacionesDFS);
+        estaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(estaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 260, 50));
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("VER COBERTURA");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verDFS.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        verDFS.setForeground(new java.awt.Color(255, 255, 255));
+        verDFS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        verDFS.setText("VER COBERTURA");
+        verDFS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verDFS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verDFSMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(verDFS, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(verDFS, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
@@ -120,11 +142,21 @@ public class CoberturaDFS extends javax.swing.JFrame {
      * @param evt 
      */
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        Ventana2 v2 = new Ventana2();
+        Menu v2 = new Menu();
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
     }//GEN-LAST:event_MenuMouseClicked
+    
+    /**
+     * Boton para iniciar la cobertura DFS
+     * @param evt 
+     */
+    private void verDFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verDFSMouseClicked
+        /**DFS dfs = new DFS(t);
+        String nombreEstacion = (String) estaciones.getSelectedItem();
+        dfs.sacarCobertura(grafoApp.encontrarEstacion(nombreEstacion));*/
+    }//GEN-LAST:event_verDFSMouseClicked
 
     /**
      * @param args the command line arguments
@@ -164,13 +196,13 @@ public class CoberturaDFS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> estaciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel verDFS;
     // End of variables declaration//GEN-END:variables
 }

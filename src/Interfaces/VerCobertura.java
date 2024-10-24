@@ -117,7 +117,7 @@ public class VerCobertura extends javax.swing.JFrame {
      * @param evt 
      */
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        Ventana2 v2 = new Ventana2();
+        Menu v2 = new Menu();
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);

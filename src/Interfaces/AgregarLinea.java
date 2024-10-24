@@ -17,6 +17,7 @@ public class AgregarLinea extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
     }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,11 +30,9 @@ public class AgregarLinea extends javax.swing.JFrame {
 
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nuevaEstacion = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        agregarEstacion = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -57,41 +56,32 @@ public class AgregarLinea extends javax.swing.JFrame {
         jLabel2.setText("AGREGAR LINEA");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 350, 40));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nuevaEstacion.setBackground(new java.awt.Color(255, 255, 255));
+        nuevaEstacion.setForeground(new java.awt.Color(0, 0, 0));
+        nuevaEstacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nuevaEstacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 270, 30));
+        getContentPane().add(nuevaEstacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 270, 30));
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(153, 0, 204), new java.awt.Color(153, 0, 204), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
         jPanel2.setForeground(new java.awt.Color(102, 0, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("AGREGAR");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 130, 30));
-
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        agregarEstacion.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        agregarEstacion.setForeground(new java.awt.Color(255, 255, 255));
+        agregarEstacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agregarEstacion.setText("AGREGAR");
+        agregarEstacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarEstacionMouseClicked(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 270, 40));
+        jPanel2.add(agregarEstacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 270, 40));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 130, 30));
 
         jPanel4.setBackground(new java.awt.Color(102, 0, 153));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
@@ -140,21 +130,21 @@ public class AgregarLinea extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nuevaEstacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaEstacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_nuevaEstacionActionPerformed
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
-        Ventana2 v2 = new Ventana2();
+        Menu v2 = new Menu();
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
+
+    private void agregarEstacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarEstacionMouseClicked
+       
+    }//GEN-LAST:event_agregarEstacionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -193,11 +183,9 @@ public class AgregarLinea extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel agregarEstacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -205,6 +193,7 @@ public class AgregarLinea extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nuevaEstacion;
     // End of variables declaration//GEN-END:variables
+   
 }
