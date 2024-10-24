@@ -23,12 +23,12 @@ public class Funciones {
     private ListaSimple listaEstaciones = new ListaSimple(); // Colección de estaciones
 
     // Método para obtener la lista de estaciones
-    public ListaSimple obtenerEstaciones() {
+    public ListaSimple getEstaciones() {
         return listaEstaciones;
     }
 
     // Método para establecer la lista de estaciones
-    public void establecerEstaciones(ListaSimple nuevasEstaciones) {
+    public void setEstaciones(ListaSimple nuevasEstaciones) {
         this.listaEstaciones = nuevasEstaciones;
     }
 
