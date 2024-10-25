@@ -152,6 +152,7 @@ public class Grafo {
             String strGrafo = construirGrafoString();
             JOptionPane.showMessageDialog(null, strGrafo);
         } else {
+            
             JOptionPane.showMessageDialog(null, "El grafo no presenta estaciones.");
         }
     }
