@@ -48,52 +48,52 @@ public class BFS {
      *
      * @param estacionInicio La estación desde la cual se iniciará el cálculo de cobertura.
      */
-    public void coberturaEstacion(Estacion primeraEstacion) {
+    public void coberturaEstacion(Estacion estacionInicio) {
         // Verificamos si la estación de inicio es nula
-        if (primeraEstacion == null) {
-            JOptionPane.showMessageDialog(null, "Por favor seleccione una estación valida.");
+        if (estacionInicio == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione una estación válida.");
             return;
         }
 
-        String resultadoBFS = "Se calcula el BFS desde " + primeraEstacion.getNombreEstacion();
+        String resultadoFinal = "Iniciando cálculo de cobertura desde la estación: " + estacionInicio.getNombreEstacion();
 
-        Cola colaEstaciones = new Cola();  
-        ListaSimple visitadas = new ListaSimple();
-        Cola distancias = new Cola(); 
+        Cola colaEstaciones = new Cola();  // Cola para gestionar las estaciones a visitar
+        ListaSimple visitadas = new ListaSimple();  // Lista para las estaciones visitadas
+        Cola distancias = new Cola();  // Cola para almacenar las distancias
 
-        
-        colaEstaciones.enColar(primeraEstacion);
-        visitadas.aggFinal(primeraEstacion);
-        distancias.enColar(0);  
+        // Encolar la estación de inicio y marcarla como visitada
+        colaEstaciones.enColar(estacionInicio);
+        visitadas.aggFinal(estacionInicio);
+        distancias.enColar(0);  // La distancia a la estación de inicio es 0
 
-        
+        // Mientras haya estaciones en la cola
         while (!colaEstaciones.colaVacia()) {
-            Estacion visitandoEstacion = (Estacion) colaEstaciones.desEnColar(); 
-            int distanciaEstaciones = (int) distancias.desEnColar(); 
+            Estacion estacionActual = (Estacion) colaEstaciones.desEnColar();  // Desencolamos la estación actual
+            int distanciaActual = (int) distancias.desEnColar();  // Desencolamos la distancia correspondiente
 
-            
-            if (distanciaEstaciones > t) {
+            // Si hemos alcanzado la distancia máxima, dejamos de explorar
+            if (distanciaActual > t) {
                 continue;
             }
 
-            resultadoBFS += "Visitando estación: " + visitandoEstacion.getNombreEstacion() + " con una distancia de " + distanciaEstaciones + "\n";
+            resultadoFinal += "Visitando estación: " + estacionActual.getNombreEstacion() + " a una distancia de " + distanciaActual + "\n";
 
-            
-            ListaSimple estacionesAdyacentes = visitandoEstacion.getListaAdyacencia();
+            // Obtener las estaciones adyacentes
+            ListaSimple estacionesAdyacentes = estacionActual.getListaAdyacencia();
             for (int i = 0; i < estacionesAdyacentes.getSize(); i++) {
                 Estacion estacionVecina = (Estacion) estacionesAdyacentes.getValor(i);
 
-                
+                // Si la estación vecina no ha sido visitada, la encolamos
                 if (!visitadas.encontrar(estacionVecina)) {
-                    colaEstaciones.enColar(estacionVecina);  
-                    visitadas.aggFinal(estacionVecina);  
-                    distancias.enColar(distanciaEstaciones + 1);  
+                    colaEstaciones.enColar(estacionVecina);  // Encolamos la estación vecina
+                    visitadas.aggFinal(estacionVecina);  // Marcamos como visitada
+                    distancias.enColar(distanciaActual + 1);  // Aumentamos la distancia
                 }
             }
         }
 
-        resultadoBFS += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " estacio.";
-        JOptionPane.showMessageDialog(null, resultadoBFS);
+        resultadoFinal += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " paradas.";
+        JOptionPane.showMessageDialog(null, resultadoFinal);
     }
     
     /**
@@ -109,35 +109,47 @@ public class BFS {
     * 
     * @throws IllegalArgumentException si estacionInicial es null.
     */
-   
     public void DefinirCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
+        // Si la estación inicial es nula, termina el método inmediatamente
         if (estacionInicial == null) {
             return;
         }
 
+        // Inicializa una cola para realizar el recorrido en anchura (BFS)
         Cola cola = new Cola();
+        // Inicializa otra cola para almacenar la distancia desde la estación inicial
         Cola distancias = new Cola();
 
+        // Agrega la estación inicial a la cola y a la lista de estaciones cubiertas
         cola.enColar(estacionInicial);
-        estacionesCubiertas.aggFinal(estacionInicial); 
+        estacionesCubiertas.aggFinal(estacionInicial);
+        // La distancia de la estación inicial es 0
         distancias.enColar(0);
 
+        // Ejecuta el recorrido en anchura mientras haya elementos en la cola
         while (!cola.colaVacia()) {
+            // Extrae la estación actual y su distancia desde la estación inicial
             Estacion actual = (Estacion) cola.desEnColar();
             int distanciaActual = (int) distancias.desEnColar();
 
+            // Si la distancia actual supera o iguala el límite de cobertura, omite los adyacentes
             if (distanciaActual >= t) {
                 continue;
             }
 
+            // Obtiene la lista de estaciones adyacentes a la estación actual
             ListaSimple adyacentes = actual.getListaAdyacencia();
             for (int i = 0; i < adyacentes.getSize(); i++) {
+                // Obtiene cada estación adyacente en la lista de adyacencia
                 Estacion adyacente = (Estacion) adyacentes.getValor(i);
 
-                
+                // Verifica si la estación adyacente aún no está cubierta
                 if (!estacionesCubiertas.encontrar(adyacente)) {
+                    // Si no está cubierta, encola la estación adyacente para procesarla
                     cola.enColar(adyacente);
-                    estacionesCubiertas.aggFinal(adyacente); 
+                    // Agrega la estación adyacente a la lista de estaciones cubiertas
+                    estacionesCubiertas.aggFinal(adyacente);
+                    // Encola la distancia actual aumentada en 1
                     distancias.enColar(distanciaActual + 1);
                 }
             }
