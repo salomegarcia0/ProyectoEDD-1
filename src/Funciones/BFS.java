@@ -48,52 +48,52 @@ public class BFS {
      *
      * @param estacionInicio La estación desde la cual se iniciará el cálculo de cobertura.
      */
-    public void coberturaEstacion(Estacion estacionInicio) {
+    public void coberturaEstacion(Estacion primeraEstacion) {
         // Verificamos si la estación de inicio es nula
-        if (estacionInicio == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccione una estación válida.");
+        if (primeraEstacion == null) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una estacion valida.");
             return;
         }
 
-        String resultadoFinal = "Iniciando cálculo de cobertura desde la estación: " + estacionInicio.getNombreEstacion();
+        String resultado = "se calcula el BFS desde " + primeraEstacion.getNombreEstacion();
 
-        Cola colaEstaciones = new Cola();  // Cola para gestionar las estaciones a visitar
-        ListaSimple visitadas = new ListaSimple();  // Lista para las estaciones visitadas
-        Cola distancias = new Cola();  // Cola para almacenar las distancias
+        Cola colaEstaciones = new Cola();  
+        ListaSimple visitadas = new ListaSimple();
+        Cola distancias = new Cola(); 
 
-        // Encolar la estación de inicio y marcarla como visitada
-        colaEstaciones.enColar(estacionInicio);
-        visitadas.aggFinal(estacionInicio);
-        distancias.enColar(0);  // La distancia a la estación de inicio es 0
+        
+        colaEstaciones.enColar(primeraEstacion);
+        visitadas.aggFinal(primeraEstacion);
+        distancias.enColar(0);  
 
-        // Mientras haya estaciones en la cola
+        
         while (!colaEstaciones.colaVacia()) {
-            Estacion estacionActual = (Estacion) colaEstaciones.desEnColar();  // Desencolamos la estación actual
-            int distanciaActual = (int) distancias.desEnColar();  // Desencolamos la distancia correspondiente
+            Estacion visitandoEstacion = (Estacion) colaEstaciones.desEnColar(); 
+            int distancia = (int) distancias.desEnColar(); 
 
-            // Si hemos alcanzado la distancia máxima, dejamos de explorar
-            if (distanciaActual > t) {
+            
+            if (distancia > t) {
                 continue;
             }
 
-            resultadoFinal += "Visitando estación: " + estacionActual.getNombreEstacion() + " a una distancia de " + distanciaActual + "\n";
+            resultado += "Visitando estación: " + visitandoEstacion.getNombreEstacion() + " con una distancia de " + distancia + "\n";
 
-            // Obtener las estaciones adyacentes
-            ListaSimple estacionesAdyacentes = estacionActual.getListaAdyacencia();
+            
+            ListaSimple estacionesAdyacentes = visitandoEstacion.getListaAdyacencia();
             for (int i = 0; i < estacionesAdyacentes.getSize(); i++) {
                 Estacion estacionVecina = (Estacion) estacionesAdyacentes.getValor(i);
 
-                // Si la estación vecina no ha sido visitada, la encolamos
+                
                 if (!visitadas.encontrar(estacionVecina)) {
-                    colaEstaciones.enColar(estacionVecina);  // Encolamos la estación vecina
-                    visitadas.aggFinal(estacionVecina);  // Marcamos como visitada
-                    distancias.enColar(distanciaActual + 1);  // Aumentamos la distancia
+                    colaEstaciones.enColar(estacionVecina);  
+                    visitadas.aggFinal(estacionVecina);  
+                    distancias.enColar(distancia + 1);  
                 }
             }
         }
 
-        resultadoFinal += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " paradas.";
-        JOptionPane.showMessageDialog(null, resultadoFinal);
+        resultado += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " paradas.";
+        JOptionPane.showMessageDialog(null, resultado);
     }
     
     /**
@@ -110,7 +110,7 @@ public class BFS {
     * @throws IllegalArgumentException si estacionInicial es null.
     */
    
-    public void marcarCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
+    public void establecerCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
         if (estacionInicial == null) {
             return;
         }
