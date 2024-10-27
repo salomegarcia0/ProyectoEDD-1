@@ -309,7 +309,7 @@ public class Grafo {
             
             if (estaciones.isHaySucursal()) { // Inicializa el algoritmo BFS.
                 BFS bfs = new BFS(t);
-                bfs.establecerCoberturaDesdeSucursal(estaciones, estacionesCubiertas);
+                bfs.DefinirCoberturaDesdeSucursal(estaciones, estacionesCubiertas);
             }
         }
 

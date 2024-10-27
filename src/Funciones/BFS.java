@@ -20,25 +20,25 @@ public class BFS {
     private int t; // Distancia máxima para la cobertura
 
     /**
-     * Constructor de la clase BFS que inicializa la distancia máxima.
+     * Constructor de la clase BFS que inicializa la distanciaEstaciones máxima.
      *
-     * @param t La distancia máxima hasta donde se calculará la cobertura.
+     * @param t La distanciaEstaciones máxima hasta donde se calculará la cobertura.
      */
     public BFS(int t) {
         this.t = t;
     }
     /**
-     * Método para obtener la distancia máxima.
+     * Método para obtener la distanciaEstaciones máxima.
      *
-     * @return La distancia máxima establecida.
+     * @return La distanciaEstaciones máxima establecida.
      */
     public int getT() {
         return t;
     }
     /**
-     * Método para establecer una nueva distancia máxima.
+     * Método para establecer una nueva distanciaEstaciones máxima.
      *
-     * @param t La nueva distancia máxima a establecer.
+     * @param t La nueva distanciaEstaciones máxima a establecer.
      */
     public void setT(int t) {
         this.t = t;
@@ -51,11 +51,11 @@ public class BFS {
     public void coberturaEstacion(Estacion primeraEstacion) {
         // Verificamos si la estación de inicio es nula
         if (primeraEstacion == null) {
-            JOptionPane.showMessageDialog(null, "Por favor seleccione una estacion valida.");
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una estación valida.");
             return;
         }
 
-        String resultado = "se calcula el BFS desde " + primeraEstacion.getNombreEstacion();
+        String resultadoBFS = "Se calcula el BFS desde " + primeraEstacion.getNombreEstacion();
 
         Cola colaEstaciones = new Cola();  
         ListaSimple visitadas = new ListaSimple();
@@ -69,14 +69,14 @@ public class BFS {
         
         while (!colaEstaciones.colaVacia()) {
             Estacion visitandoEstacion = (Estacion) colaEstaciones.desEnColar(); 
-            int distancia = (int) distancias.desEnColar(); 
+            int distanciaEstaciones = (int) distancias.desEnColar(); 
 
             
-            if (distancia > t) {
+            if (distanciaEstaciones > t) {
                 continue;
             }
 
-            resultado += "Visitando estación: " + visitandoEstacion.getNombreEstacion() + " con una distancia de " + distancia + "\n";
+            resultadoBFS += "Visitando estación: " + visitandoEstacion.getNombreEstacion() + " con una distancia de " + distanciaEstaciones + "\n";
 
             
             ListaSimple estacionesAdyacentes = visitandoEstacion.getListaAdyacencia();
@@ -87,13 +87,13 @@ public class BFS {
                 if (!visitadas.encontrar(estacionVecina)) {
                     colaEstaciones.enColar(estacionVecina);  
                     visitadas.aggFinal(estacionVecina);  
-                    distancias.enColar(distancia + 1);  
+                    distancias.enColar(distanciaEstaciones + 1);  
                 }
             }
         }
 
-        resultado += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " paradas.";
-        JOptionPane.showMessageDialog(null, resultado);
+        resultadoBFS += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " estacio.";
+        JOptionPane.showMessageDialog(null, resultadoBFS);
     }
     
     /**
@@ -110,7 +110,7 @@ public class BFS {
     * @throws IllegalArgumentException si estacionInicial es null.
     */
    
-    public void establecerCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
+    public void DefinirCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
         if (estacionInicial == null) {
             return;
         }
