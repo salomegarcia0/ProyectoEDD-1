@@ -5,7 +5,7 @@
 package Interfaces;
 
 import EDD.ListaSimple;
-//import Funciones.Funciones;
+import Funciones.Funciones;
 import static Interfaces.CargarRed.grafoApp;
 import javax.swing.DefaultComboBoxModel;
 
@@ -16,7 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ColocarSucursal extends javax.swing.JFrame {
     DefaultComboBoxModel estacionesSinSucursal = new DefaultComboBoxModel();
     DefaultComboBoxModel estacionesConSucursal = new DefaultComboBoxModel();
-    //Funciones fun = new Funciones();
+    Funciones fun = new Funciones();
     /**
      * Creates new form ColocarSucursal
      */
@@ -30,19 +30,19 @@ public class ColocarSucursal extends javax.swing.JFrame {
         
         
         
-        /**if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
+        if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
             ListaSimple nombres = fun.listarEstacionesSinSucursal(grafoApp);
             for (int i = 0; i < nombres.getSize(); i++) {
                 estacionesSinSucursal.addElement(nombres.getValor(i));
             }
-        }*/
+        }
         
-        /**if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
+        if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
             ListaSimple nombres = fun.listarEstacionesConSucursal(grafoApp);
             for (int i = 0; i < nombres.getSize(); i++) {
                 estacionesConSucursal.addElement(nombres.getValor(i));
             }
-        }*/
+        }
         
     }
 
@@ -187,13 +187,13 @@ public class ColocarSucursal extends javax.swing.JFrame {
 
     private void guardarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarSucursalMouseClicked
         String nombre = String.valueOf(sinSucursal.getSelectedItem());
-        //fun.agregarSucursal(nombre, grafoApp);
+        fun.agregarSucursal(nombre, grafoApp);
         this.actualizarCombo();
     }//GEN-LAST:event_guardarSucursalMouseClicked
 
     private void eliminarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarSucursalMouseClicked
         String nombre = String.valueOf(haySucursal.getSelectedItem());
-        //fun.eliminarSucursal(nombre, grafoApp);
+        fun.eliminarSucursal(nombre, grafoApp);
         this.actualizarCombo();
     }//GEN-LAST:event_eliminarSucursalMouseClicked
 

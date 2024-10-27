@@ -5,8 +5,8 @@
 package Interfaces;
 
 import EDD.ListaSimple;
-//import Funciones.DFS;
-//import Funciones.Funciones;
+import Funciones.DFS;
+import Funciones.Funciones;
 import static Interfaces.CargarRed.grafoApp;
 import static Interfaces.CargarRed.t;
 import javax.swing.DefaultComboBoxModel;
@@ -18,20 +18,20 @@ import javax.swing.DefaultComboBoxModel;
 public class CoberturaDFS extends javax.swing.JFrame {
     
     DefaultComboBoxModel estacionesDFS = new DefaultComboBoxModel();
-    //Funciones fun = new Funciones();
+    Funciones fun = new Funciones();
     /**
      * Creates new form DFS
      */
     public CoberturaDFS() {
         initComponents();
-        /**estacionesDFS.removeAllElements();
+        estacionesDFS.removeAllElements();
         
         if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
             ListaSimple nombres = fun.listarEstacionesConSucursal(grafoApp);
             for (int i = 0; i < nombres.getSize(); i++) {
                 estacionesDFS.addElement(nombres.getValor(i));
             }
-        }*/
+        }
     }
 
     /**
@@ -153,9 +153,9 @@ public class CoberturaDFS extends javax.swing.JFrame {
      * @param evt 
      */
     private void verDFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verDFSMouseClicked
-        /**DFS dfs = new DFS(t);
+        DFS dfs = new DFS(t);
         String nombreEstacion = (String) estaciones.getSelectedItem();
-        dfs.sacarCobertura(grafoApp.encontrarEstacion(nombreEstacion));*/
+        dfs.sacarCobertura(grafoApp.encontrarEstacion(nombreEstacion));
     }//GEN-LAST:event_verDFSMouseClicked
 
     /**

@@ -4,20 +4,57 @@
  */
 package Interfaces;
 
+import Clases.Estacion;
+import static Interfaces.CargarRed.grafoApp;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author salom
  */
 public class AgregarLinea extends javax.swing.JFrame {
-
+    private DefaultComboBoxModel modeloadyacencia1;
+    private DefaultComboBoxModel modeloadyacencia2;
+    private ComboBoxModel<String> primeraAdyacencia; //las agregué pq me daba error y netbeans lo sigirió
+    private ComboBoxModel<String> modeloAdyacencia2; //las agregué pq me daba error y netbeans lo sigirió
+    
     /**
      * Creates new form AgregarLinea
      */
     public AgregarLinea() {
+        modeloadyacencia1 = new DefaultComboBoxModel();
+        modeloadyacencia2 = new DefaultComboBoxModel();
         initComponents();
         this.setResizable(false);
     }
+    
+    private void modificarComboBoxes(){
+        this.cargarAdyacenciasBox1();
+        this.cargarAdyacenciasBox2();
         
+    }
+    
+    private void cargarAdyacenciasBox1(){
+        modeloadyacencia1.removeAllElements();
+        if(grafoApp.verEstaciones()!= null){
+            for(int i = 0; i< grafoApp.verEstaciones().getSize(); i++){
+                String nombreEstacion =(String) grafoApp.verEstaciones().getValor(i);
+                modeloadyacencia1.addElement(nombreEstacion);
+            }
+        }
+    }
+    
+    private void cargarAdyacenciasBox2(){
+        modeloadyacencia2.removeAllElements();
+        if(grafoApp.verEstaciones()!= null){
+            for(int i = 0; i< grafoApp.verEstaciones().getSize(); i++){
+                String nombreEstacion =(String) grafoApp.verEstaciones().getValor(i);
+                modeloadyacencia2.addElement(nombreEstacion);
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,8 +73,10 @@ public class AgregarLinea extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        agregarAdyacencia = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        modelAdyacencia1 = new javax.swing.JComboBox<>();
+        modelAdyacencia2 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -74,6 +113,7 @@ public class AgregarLinea extends javax.swing.JFrame {
         agregarEstacion.setForeground(new java.awt.Color(255, 255, 255));
         agregarEstacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         agregarEstacion.setText("AGREGAR");
+        agregarEstacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         agregarEstacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregarEstacionMouseClicked(evt);
@@ -105,11 +145,17 @@ public class AgregarLinea extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("AGREGAR");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 50));
+        agregarAdyacencia.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        agregarAdyacencia.setForeground(new java.awt.Color(255, 255, 255));
+        agregarAdyacencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agregarAdyacencia.setText("AGREGAR");
+        agregarAdyacencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        agregarAdyacencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarAdyacenciaMouseClicked(evt);
+            }
+        });
+        jPanel3.add(agregarAdyacencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 50));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 130, 50));
 
@@ -118,6 +164,16 @@ public class AgregarLinea extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Seleccione las adyacencias.");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 270, -1));
+
+        modelAdyacencia1.setBackground(new java.awt.Color(255, 255, 255));
+        modelAdyacencia1.setForeground(new java.awt.Color(0, 0, 0));
+        modelAdyacencia1.setModel(primeraAdyacencia);
+        getContentPane().add(modelAdyacencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 270, 30));
+
+        modelAdyacencia2.setBackground(new java.awt.Color(255, 255, 255));
+        modelAdyacencia2.setForeground(new java.awt.Color(0, 0, 0));
+        modelAdyacencia2.setModel(modeloAdyacencia2);
+        getContentPane().add(modelAdyacencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 270, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -143,8 +199,27 @@ public class AgregarLinea extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuMouseClicked
 
     private void agregarEstacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarEstacionMouseClicked
-       
+       if(!"".equals(nuevaEstacion.getText())){
+           String nombre = nuevaEstacion.getText();
+           Estacion nombreEstacion = new Estacion(nombre);
+           grafoApp.agregarEstacion(nombreEstacion);
+           this.modificarComboBoxes();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor escribir el nombre de una estacion");
+        }
     }//GEN-LAST:event_agregarEstacionMouseClicked
+
+    private void agregarAdyacenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarAdyacenciaMouseClicked
+        if(!modelAdyacencia1.getSelectedItem().equals(modelAdyacencia2.getSelectedItem())){
+            String nombreEstacion1 = (String) modelAdyacencia1.getSelectedItem();
+            String nombreEstacion2 = (String) modelAdyacencia2.getSelectedItem();
+            
+            grafoApp.agregarConexion(nombreEstacion1, nombreEstacion2);
+            this.modificarComboBoxes();
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede realizar una conexion haci si mismo. La ciudad Inicio y Final deben ser diferentes.");
+        }
+    }//GEN-LAST:event_agregarAdyacenciaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,16 +258,18 @@ public class AgregarLinea extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
+    private javax.swing.JLabel agregarAdyacencia;
     private javax.swing.JLabel agregarEstacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JComboBox<String> modelAdyacencia1;
+    private javax.swing.JComboBox<String> modelAdyacencia2;
     private javax.swing.JTextField nuevaEstacion;
     // End of variables declaration//GEN-END:variables
    

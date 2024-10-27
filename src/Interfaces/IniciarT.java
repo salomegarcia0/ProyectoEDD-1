@@ -4,7 +4,7 @@
  */
 package Interfaces;
 
-//import Funciones.Validaciones;
+import Funciones.Validaciones;
 import static Interfaces.CargarRed.t;
 import javax.swing.JOptionPane;
 /**
@@ -118,9 +118,9 @@ public class IniciarT extends javax.swing.JFrame {
     
     private void guardarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTMouseClicked
         String tStr = tDeseado.getText();
-        //Validaciones val = new Validaciones();
+        Validaciones val = new Validaciones();
         
-        /**if(val.validarEntrada(tStr) != -1){
+        if(val.validarEntrada(tStr) != -1){
             t = Integer.parseInt(tStr);
             JOptionPane.showMessageDialog(null, "T ha sido actualizado a:" + tStr);
             verT.setText(tStr);
@@ -129,7 +129,7 @@ public class IniciarT extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "El valor ingresado no es valido"
                     + "por favor intente nuevamente");
-        }*/
+        }
     }//GEN-LAST:event_guardarTMouseClicked
 
     /**

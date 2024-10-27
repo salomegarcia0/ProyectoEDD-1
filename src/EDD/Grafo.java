@@ -156,6 +156,19 @@ public class Grafo {
             JOptionPane.showMessageDialog(null, "El grafo no presenta estaciones.");
         }
     }
+    
+    public ListaSimple verEstaciones() {
+        if (!this.grafoVacio()) {
+            ListaSimple nombresEstaciones = new ListaSimple();
+            for (int i = 0; i < this.getEstaciones().getSize(); i++) {
+                Estacion estacion = (Estacion) this.getEstaciones().getValor(i);
+                nombresEstaciones.aggFinal(estacion.getNombreEstacion());
+            }
+            return nombresEstaciones;
+        }else{
+            return null;
+        }
+    }
 
     
     

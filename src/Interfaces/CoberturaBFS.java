@@ -5,8 +5,8 @@
 package Interfaces;
 
 import EDD.ListaSimple;
-//import Funciones.BFS;
-//import Funciones.Funciones;
+import Funciones.BFS;
+import Funciones.Funciones;
 import static Interfaces.CargarRed.grafoApp;
 import static Interfaces.CargarRed.t;
 import javax.swing.DefaultComboBoxModel;
@@ -17,20 +17,20 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class CoberturaBFS extends javax.swing.JFrame {
     
-    DefaultComboBoxModel estaciones = new DefaultComboBoxModel();
-    //Funciones func = new Funciones();
+    DefaultComboBoxModel modeloEstaciones = new DefaultComboBoxModel();
+    Funciones func = new Funciones();
     /**
      * Creates new form BFS
      */
     public CoberturaBFS() {
-        /**estaciones.removeAllElements();
+        initComponents();
+        modeloEstaciones.removeAllElements();
         if(!func.listarEstacionesConSucursal(grafoApp).isEmpty()){
             ListaSimple nombres = func.listarEstacionesConSucursal(grafoApp);
             for (int i = 0; i < nombres.getSize(); i++) {
-                estaciones.addElement(nombres.getValor(i));
+                modeloEstaciones.addElement(nombres.getValor(i));
             }
-        }**/
-        initComponents();
+        }
     }
 
     /**
@@ -89,7 +89,7 @@ public class CoberturaBFS extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(estaciones);
+        jComboBox1.setModel(modeloEstaciones);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -142,10 +142,10 @@ public class CoberturaBFS extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void verBFSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verBFSMouseClicked
-        /**BFS bfs = new BFS(t);
-        String nombreEstacion = (String) estaciones.getSelectedItem();
+        BFS bfs = new BFS(t);
+        String nombreEstacion = (String) modeloEstaciones.getSelectedItem();
         bfs.coberturaEstacion(grafoApp.encontrarEstacion(nombreEstacion));
-        */
+        
     }//GEN-LAST:event_verBFSMouseClicked
 
     /**

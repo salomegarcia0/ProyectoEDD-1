@@ -4,7 +4,7 @@
  */
 package Interfaces;
 
-//import Funciones.Validaciones;
+import Funciones.Validaciones;
 import static Interfaces.CargarRed.t;
 import javax.swing.JOptionPane;
 
@@ -134,15 +134,15 @@ public class EstablecerT extends javax.swing.JFrame {
 
     private void establecerTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_establecerTMouseClicked
         String tStr = Tnuevo.getText();
-        //Validaciones val = new Validaciones();
+        Validaciones val = new Validaciones();
 
-        /**if (val.validarEntrada(tStr) != -1) {
+        if (val.validarEntrada(tStr) != -1) {
             t = Integer.parseInt(tStr);
             tActual.setText(String.valueOf(t));
             JOptionPane.showMessageDialog(null, "T actualizado");
         } else {
             JOptionPane.showMessageDialog(null, "No es valido");
-        }*/
+        }
     }//GEN-LAST:event_establecerTMouseClicked
 
     /**

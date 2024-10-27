@@ -5,7 +5,7 @@
 package Interfaces;
 
 import EDD.Grafo;
-//import Funciones.Funciones;
+import Funciones.Funciones;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,13 +39,13 @@ public class CargarRed extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         ruta = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        cargarRed = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         mostrar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         buscar = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        CargarRed = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -62,33 +62,6 @@ public class CargarRed extends javax.swing.JFrame {
         ruta.setForeground(new java.awt.Color(0, 0, 0));
         ruta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         getContentPane().add(ruta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 350, 40));
-
-        jPanel4.setBackground(new java.awt.Color(102, 0, 153));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
-
-        cargarRed.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        cargarRed.setForeground(new java.awt.Color(255, 255, 255));
-        cargarRed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargarRed.setText("CARGAR RED");
-        cargarRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarRed.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cargarRedMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cargarRed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cargarRed, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 350, 50));
 
         mostrar.setBackground(new java.awt.Color(255, 252, 255));
         jScrollPane1.setViewportView(mostrar);
@@ -133,6 +106,24 @@ public class CargarRed extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 110, 40));
 
+        jPanel5.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(102, 0, 153)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CargarRed.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        CargarRed.setForeground(new java.awt.Color(255, 255, 255));
+        CargarRed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CargarRed.setText("CARGAR RED");
+        CargarRed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CargarRed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CargarRedMouseClicked(evt);
+            }
+        });
+        jPanel5.add(CargarRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 50));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 350, 50));
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.png"))); // NOI18N
@@ -146,6 +137,7 @@ public class CargarRed extends javax.swing.JFrame {
     //Agregar Javadoc
     private void buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMouseClicked
         JFileChooser file = new JFileChooser();
+        
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos JSON (*.json", "json");
         file.setFileFilter(filtro);
         int seleccion = file.showOpenDialog(this);
@@ -170,8 +162,8 @@ public class CargarRed extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buscarMouseClicked
 
-    private void cargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarRedMouseClicked
-        /**if (!mostrar.getText().isEmpty()) {
+    private void CargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarRedMouseClicked
+        if (!mostrar.getText().isEmpty()) {
             Funciones func  = new Funciones();
             func.cargarRedTransporte(ruta.getText());
             
@@ -186,8 +178,8 @@ public class CargarRed extends javax.swing.JFrame {
             iniciarT.setLocationRelativeTo(null);
             iniciarT.setResizable(false);
             iniciarT.setVisible(true);
-        }**/
-    }//GEN-LAST:event_cargarRedMouseClicked
+        }
+    }//GEN-LAST:event_CargarRedMouseClicked
 
     /**
      * @param args the command line arguments
@@ -225,14 +217,14 @@ public class CargarRed extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CargarRed;
     private javax.swing.JLabel buscar;
-    private javax.swing.JLabel cargarRed;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mostrar;
     private javax.swing.JTextField ruta;
