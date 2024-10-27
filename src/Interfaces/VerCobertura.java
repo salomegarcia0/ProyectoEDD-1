@@ -28,10 +28,9 @@ public class VerCobertura extends javax.swing.JFrame {
 
         BFS = new javax.swing.JLabel();
         DFS = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -55,18 +54,6 @@ public class VerCobertura extends javax.swing.JFrame {
         });
         getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 380, 130));
 
-        jPanel3.setBackground(new java.awt.Color(102, 0, 153));
-        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VER COBERTURA");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 60));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 360, 60));
-
         jPanel2.setBackground(new java.awt.Color(102, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,6 +71,12 @@ public class VerCobertura extends javax.swing.JFrame {
         jPanel2.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 60));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 360, 60));
+
+        jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("VER COBERTURAS");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 16, 350, 40));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -174,6 +167,5 @@ public class VerCobertura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

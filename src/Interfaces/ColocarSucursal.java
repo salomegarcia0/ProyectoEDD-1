@@ -8,42 +8,42 @@ import EDD.ListaSimple;
 import Funciones.Funciones;
 import static Interfaces.CargarRed.grafoApp;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author salom
  */
 public class ColocarSucursal extends javax.swing.JFrame {
-    DefaultComboBoxModel estacionesSinSucursal = new DefaultComboBoxModel();
-    DefaultComboBoxModel estacionesConSucursal = new DefaultComboBoxModel();
-    Funciones fun = new Funciones();
+    
+    DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+    DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
+    
     /**
      * Creates new form ColocarSucursal
      */
     public ColocarSucursal() {
         initComponents();
+        this.ActualizarCombo();
     }
     
-    public void actualizarCombo(){
-        estacionesSinSucursal.removeAllElements();
-        estacionesConSucursal.removeAllElements();
-        
-        
-        
-        if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
-            ListaSimple nombres = fun.listarEstacionesSinSucursal(grafoApp);
-            for (int i = 0; i < nombres.getSize(); i++) {
-                estacionesSinSucursal.addElement(nombres.getValor(i));
+    public void ActualizarCombo(){
+        modelo1.removeAllElements();
+        modelo2.removeAllElements();
+        if(!grafoApp.verEstacionesSinSucursal().isEmpty()){
+            
+            ListaSimple nombreSucursales = grafoApp.verEstacionesSinSucursal();
+            for (int i = 0; i < nombreSucursales.getSize(); i++) {
+                modelo1.addElement(nombreSucursales.getValor(i));
             }
         }
         
-        if(!fun.listarEstacionesConSucursal(grafoApp).isEmpty()){
-            ListaSimple nombres = fun.listarEstacionesConSucursal(grafoApp);
-            for (int i = 0; i < nombres.getSize(); i++) {
-                estacionesConSucursal.addElement(nombres.getValor(i));
+        if(!grafoApp.obtenerEstacionesConSucursal().isEmpty()){
+            ListaSimple nombreSucursales = grafoApp.obtenerEstacionesConSucursal();
+            for (int i = 0; i < nombreSucursales.getSize(); i++) {
+                modelo2.addElement(nombreSucursales.getValor(i));
             }
         }
-        
     }
 
     /**
@@ -60,8 +60,8 @@ public class ColocarSucursal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        sinSucursal = new javax.swing.JComboBox<>();
-        haySucursal = new javax.swing.JComboBox<>();
+        noTieneSucursal = new javax.swing.JComboBox<>();
+        TieneSucursal = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         guardarSucursal = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -104,13 +104,13 @@ public class ColocarSucursal extends javax.swing.JFrame {
         jLabel4.setText("Seleccione una estación:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 20));
 
-        sinSucursal.setBackground(new java.awt.Color(255, 255, 255));
-        sinSucursal.setModel(estacionesSinSucursal);
-        getContentPane().add(sinSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 290, -1));
+        noTieneSucursal.setBackground(new java.awt.Color(255, 255, 255));
+        noTieneSucursal.setModel(modelo1);
+        getContentPane().add(noTieneSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 290, -1));
 
-        haySucursal.setBackground(new java.awt.Color(255, 255, 255));
-        haySucursal.setModel(estacionesConSucursal);
-        getContentPane().add(haySucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 290, -1));
+        TieneSucursal.setBackground(new java.awt.Color(255, 255, 255));
+        TieneSucursal.setModel(modelo2);
+        getContentPane().add(TieneSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 290, -1));
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 0, 255), new java.awt.Color(204, 0, 255), new java.awt.Color(51, 0, 102), new java.awt.Color(51, 0, 102)));
@@ -186,15 +186,20 @@ public class ColocarSucursal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuMouseClicked
 
     private void guardarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarSucursalMouseClicked
-        String nombre = String.valueOf(sinSucursal.getSelectedItem());
-        fun.agregarSucursal(nombre, grafoApp);
-        this.actualizarCombo();
+        String nombreSucursal = (String) noTieneSucursal.getSelectedItem();
+        grafoApp.agregarSucursal(nombreSucursal);
+        if(grafoApp.ComprobarCoberturaTotal()){
+            JOptionPane.showMessageDialog(null, "Ya se alcanzo la totalidad de la cobertura");
+        }else{
+            JOptionPane.showMessageDialog(null, "No se ha alcanzado la cobertura total. ");
+        }
+        this.ActualizarCombo();
     }//GEN-LAST:event_guardarSucursalMouseClicked
 
     private void eliminarSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarSucursalMouseClicked
-        String nombre = String.valueOf(haySucursal.getSelectedItem());
-        fun.eliminarSucursal(nombre, grafoApp);
-        this.actualizarCombo();
+        String nombre = String.valueOf(TieneSucursal.getSelectedItem());
+        grafoApp.eliminarSucursal(nombre);
+        this.ActualizarCombo();
     }//GEN-LAST:event_eliminarSucursalMouseClicked
 
     /**
@@ -234,9 +239,9 @@ public class ColocarSucursal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
+    private javax.swing.JComboBox<String> TieneSucursal;
     private javax.swing.JLabel eliminarSucursal;
     private javax.swing.JLabel guardarSucursal;
-    private javax.swing.JComboBox<String> haySucursal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,6 +252,6 @@ public class ColocarSucursal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JComboBox<String> sinSucursal;
+    private javax.swing.JComboBox<String> noTieneSucursal;
     // End of variables declaration//GEN-END:variables
 }

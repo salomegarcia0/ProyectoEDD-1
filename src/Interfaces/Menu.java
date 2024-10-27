@@ -4,19 +4,28 @@
  */
 package Interfaces;
 
+import Clases.Estacion;
+import EDD.Grafo;
+import EDD.ListaSimple;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+        
 
 /**
  *
  * @author salom
  */
 public class Menu extends javax.swing.JFrame {
-
+    private Grafo grafo;
     /**
      * Creates new form Ventana2
      */
     public Menu() {
         initComponents();
+        grafo = new Grafo();
+        
     }
 
     /**
@@ -180,9 +189,63 @@ public class Menu extends javax.swing.JFrame {
      * @param evt 
      */
     private void mostrarGrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarGrafoMouseClicked
+
+        System.setProperty("org.grapstream.ui", "swing");
+        Graph graph = new SingleGraph("Red de Transporte");
+        for(int i = 0; i< grafo.getEstaciones().getSize(); i++){
+            Estacion estacion = (Estacion) grafo.getEstaciones().getValor(i);
+            if (graph.getNode(estacion.getNombreEstacion()) == null){
+                Node nodo = graph.addNode(estacion.getNombreEstacion());
+                nodo.setAttribute("ui.label", estacion.getNombreEstacion());
+                
+                if(estacion.isHaySucursal()){
+                    nodo.setAttribute("ui.class", "sucursal");
+                }
+            }
+            
+            ListaSimple adyacencias = estacion.getListaAdyacencia();
+            for(int j = 0; j < adyacencias.getSize(); j++){
+                Estacion adyacencia = (Estacion) adyacencias.getValor(j);
+                
+                if (graph.getNode(adyacencia.getNombreEstacion()) == null){
+                    Node nodoDeAdyacencia = graph.addNode(adyacencia.getNombreEstacion());
+                    nodoDeAdyacencia.setAttribute("ui,label", adyacencia.getNombreEstacion());
+                }
+                
+                String edgeID = estacion.getNombreEstacion() + "-" + adyacencia.getNombreEstacion();
+                if (graph.getEdge(edgeID) == null && graph.getEdge(adyacencia.getNombreEstacion() + "-" + estacion.getNombreEstacion()) == null) {
+                    graph.addEdge(edgeID, estacion.getNombreEstacion(), adyacencia.getNombreEstacion()).setAttribute("ui.label", edgeID);    
+                }
+            }
+        }
         
+        graph.setAttribute("ui.stylesheet", styleSheet);
+        graph.setAutoCreate(true);
+        graph.setStrict(false);
         
+        graph.display();
     }//GEN-LAST:event_mostrarGrafoMouseClicked
+    
+    protected String styleSheet =
+            "node { "
+            + "   fill-color: red; " // Nodos sin sucursal en azul
+            + "   size: 30px; "
+            + "   text-size: 14px; "
+            + "   text-color: white; "
+            + "   text-background-mode: plain; "
+            + "   text-background-color: red;"
+            + "} "
+            + "node.sucursal { "
+            + "   fill-color: purple; " // Nodos con sucursal en amarillo
+            + "   size: 20px; "
+            + "   text-size: 14px; "
+            + "   text-color: black; "
+            + "   text-background-mode: plain; "
+            + "   text-background-color: purple;"
+            + "} "
+            + "edge { "
+            + "   fill-color: gray; "
+            + "} ";
     
     /**
      * Boton para ir a la ventana de establecer T

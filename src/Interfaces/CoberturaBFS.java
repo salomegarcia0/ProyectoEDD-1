@@ -135,6 +135,7 @@ public class CoberturaBFS extends javax.swing.JFrame {
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

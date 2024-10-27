@@ -161,7 +161,8 @@ public class CargarRed extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Archivo guardado correctamente");
         }
     }//GEN-LAST:event_buscarMouseClicked
-
+    
+    //agregar Javadoc
     private void CargarRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CargarRedMouseClicked
         if (!mostrar.getText().isEmpty()) {
             Funciones func  = new Funciones();

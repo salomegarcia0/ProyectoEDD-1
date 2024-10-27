@@ -95,4 +95,52 @@ public class BFS {
         resultadoFinal += "El cálculo de cobertura ha finalizado hasta una distancia de " + t + " paradas.";
         JOptionPane.showMessageDialog(null, resultadoFinal);
     }
+    
+    /**
+    * Marca la cobertura de estaciones a partir de una estación inicial que tiene una sucursal.
+    * Utiliza un algoritmo de búsqueda en anchura (BFS) para explorar las estaciones adyacentes
+    * hasta una distancia máxima especificada.
+    *
+    * @param estacionInicial La estación desde la cual se comienza a marcar la cobertura. 
+    *                       Debe ser una estación válida y no nula.
+    * @param estacionesCubiertas La lista donde se almacenarán las estaciones que han sido cubiertas.
+    *                       Esta lista se actualizará con las estaciones alcanzadas durante 
+    *                       la búsqueda.
+    * 
+    * @throws IllegalArgumentException si estacionInicial es null.
+    */
+   
+    public void marcarCoberturaDesdeSucursal(Estacion estacionInicial, ListaSimple estacionesCubiertas) {
+        if (estacionInicial == null) {
+            return;
+        }
+
+        Cola cola = new Cola();
+        Cola distancias = new Cola();
+
+        cola.enColar(estacionInicial);
+        estacionesCubiertas.aggFinal(estacionInicial); 
+        distancias.enColar(0);
+
+        while (!cola.colaVacia()) {
+            Estacion actual = (Estacion) cola.desEnColar();
+            int distanciaActual = (int) distancias.desEnColar();
+
+            if (distanciaActual >= t) {
+                continue;
+            }
+
+            ListaSimple adyacentes = actual.getListaAdyacencia();
+            for (int i = 0; i < adyacentes.getSize(); i++) {
+                Estacion adyacente = (Estacion) adyacentes.getValor(i);
+
+                
+                if (!estacionesCubiertas.encontrar(adyacente)) {
+                    cola.enColar(adyacente);
+                    estacionesCubiertas.aggFinal(adyacente); 
+                    distancias.enColar(distanciaActual + 1);
+                }
+            }
+        }
+    }
 }

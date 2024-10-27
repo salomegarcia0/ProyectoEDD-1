@@ -146,6 +146,7 @@ public class CoberturaDFS extends javax.swing.JFrame {
         v2.setLocationRelativeTo(null);
         v2.setResizable(false);
         v2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
     
     /**

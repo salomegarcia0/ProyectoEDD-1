@@ -131,7 +131,8 @@ public class EstablecerT extends javax.swing.JFrame {
         v2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
-
+    
+    //javadoc
     private void establecerTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_establecerTMouseClicked
         String tStr = Tnuevo.getText();
         Validaciones val = new Validaciones();

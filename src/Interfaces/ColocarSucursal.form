@@ -110,13 +110,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="sinSucursal">
+    <Component class="javax.swing.JComboBox" name="noTieneSucursal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="estacionesSinSucursal" type="code"/>
+          <Connection code="modelo1" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -128,13 +128,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="haySucursal">
+    <Component class="javax.swing.JComboBox" name="TieneSucursal">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="estacionesConSucursal" type="code"/>
+          <Connection code="modelo2" type="code"/>
         </Property>
       </Properties>
       <AuxValues>

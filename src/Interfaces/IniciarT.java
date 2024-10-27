@@ -116,6 +116,7 @@ public class IniciarT extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    //javadoc
     private void guardarTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarTMouseClicked
         String tStr = tDeseado.getText();
         Validaciones val = new Validaciones();

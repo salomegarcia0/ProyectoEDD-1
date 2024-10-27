@@ -4,9 +4,8 @@
  */
 package Interfaces;
 
-import Clases.Estacion;
+import EDD.ListaSimple;
 import static Interfaces.CargarRed.grafoApp;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -15,43 +14,46 @@ import javax.swing.JOptionPane;
  * @author salom
  */
 public class AgregarLinea extends javax.swing.JFrame {
-    private DefaultComboBoxModel modeloadyacencia1;
-    private DefaultComboBoxModel modeloadyacencia2;
-    private ComboBoxModel<String> primeraAdyacencia; //las agregué pq me daba error y netbeans lo sigirió
-    private ComboBoxModel<String> modeloAdyacencia2; //las agregué pq me daba error y netbeans lo sigirió
+    DefaultComboBoxModel modelo1 = new DefaultComboBoxModel();
+    DefaultComboBoxModel modelo2 = new DefaultComboBoxModel();
     
     /**
      * Creates new form AgregarLinea
      */
     public AgregarLinea() {
-        modeloadyacencia1 = new DefaultComboBoxModel();
-        modeloadyacencia2 = new DefaultComboBoxModel();
         initComponents();
         this.setResizable(false);
+        this.ActualizarComboBox();
     }
     
-    private void modificarComboBoxes(){
-        this.cargarAdyacenciasBox1();
-        this.cargarAdyacenciasBox2();
-        
+    /**
+     * Metodo para actualizar los comboBox cada vez que se modifique algo en el grafo
+     */
+    private void ActualizarComboBox(){
+       this.NuevoBoxAdy1();
+       this.NuevoBoxAdy2();
     }
     
-    private void cargarAdyacenciasBox1(){
-        modeloadyacencia1.removeAllElements();
-        if(grafoApp.verEstaciones()!= null){
-            for(int i = 0; i< grafoApp.verEstaciones().getSize(); i++){
-                String nombreEstacion =(String) grafoApp.verEstaciones().getValor(i);
-                modeloadyacencia1.addElement(nombreEstacion);
+    //nuevo
+    private void NuevoBoxAdy1(){
+        modelo1.removeAllElements();
+        ListaSimple estaciones = grafoApp.verEstaciones();
+        if (estaciones != null) {
+            for (int i = 0; i < estaciones.getSize(); i++) {
+                String nombreEstacion = (String) estaciones.getValor(i);
+                modelo1.addElement(nombreEstacion);
             }
         }
     }
     
-    private void cargarAdyacenciasBox2(){
-        modeloadyacencia2.removeAllElements();
-        if(grafoApp.verEstaciones()!= null){
-            for(int i = 0; i< grafoApp.verEstaciones().getSize(); i++){
-                String nombreEstacion =(String) grafoApp.verEstaciones().getValor(i);
-                modeloadyacencia2.addElement(nombreEstacion);
+    //nuevo
+    private void NuevoBoxAdy2(){
+        modelo2.removeAllElements();
+        ListaSimple estaciones = grafoApp.verEstaciones();
+        if (estaciones!= null) {
+            for (int i = 0; i < estaciones.getSize(); i++) {
+                String nombreEstacion = (String) estaciones.getValor(i);
+                modelo2.addElement(nombreEstacion);
             }
         }
     }
@@ -75,8 +77,8 @@ public class AgregarLinea extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         agregarAdyacencia = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        modelAdyacencia1 = new javax.swing.JComboBox<>();
-        modelAdyacencia2 = new javax.swing.JComboBox<>();
+        primeraEstacion = new javax.swing.JComboBox<>();
+        ultimaEstacion = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -165,15 +167,11 @@ public class AgregarLinea extends javax.swing.JFrame {
         jLabel7.setText("Seleccione las adyacencias.");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 270, -1));
 
-        modelAdyacencia1.setBackground(new java.awt.Color(255, 255, 255));
-        modelAdyacencia1.setForeground(new java.awt.Color(0, 0, 0));
-        modelAdyacencia1.setModel(primeraAdyacencia);
-        getContentPane().add(modelAdyacencia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 270, 30));
+        primeraEstacion.setModel(modelo1);
+        getContentPane().add(primeraEstacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 270, 30));
 
-        modelAdyacencia2.setBackground(new java.awt.Color(255, 255, 255));
-        modelAdyacencia2.setForeground(new java.awt.Color(0, 0, 0));
-        modelAdyacencia2.setModel(modeloAdyacencia2);
-        getContentPane().add(modelAdyacencia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 270, 30));
+        ultimaEstacion.setModel(modelo2);
+        getContentPane().add(ultimaEstacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 270, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -197,27 +195,32 @@ public class AgregarLinea extends javax.swing.JFrame {
         v2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MenuMouseClicked
-
+    
+    //nueva
     private void agregarEstacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarEstacionMouseClicked
-       if(!"".equals(nuevaEstacion.getText())){
-           String nombre = nuevaEstacion.getText();
-           Estacion nombreEstacion = new Estacion(nombre);
-           grafoApp.agregarEstacion(nombreEstacion);
-           this.modificarComboBoxes();
+        if(!nuevaEstacion.getText().isEmpty()){
+           String nombreEstacion = nuevaEstacion.getText();
+           grafoApp.StringAggEstacion(nombreEstacion);
+           this.ActualizarComboBox();
+           
         }else{
-             JOptionPane.showMessageDialog(null, "Por favor escribir el nombre de una estacion");
+             JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre "
+                     + "de la estacion que desea agregar");
         }
     }//GEN-LAST:event_agregarEstacionMouseClicked
-
+    
+    //nueva
     private void agregarAdyacenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarAdyacenciaMouseClicked
-        if(!modelAdyacencia1.getSelectedItem().equals(modelAdyacencia2.getSelectedItem())){
-            String nombreEstacion1 = (String) modelAdyacencia1.getSelectedItem();
-            String nombreEstacion2 = (String) modelAdyacencia2.getSelectedItem();
+        if(!primeraEstacion.getSelectedItem().equals(ultimaEstacion.getSelectedItem())){
+            String nombreEstacion1 = (String) primeraEstacion.getSelectedItem();
+            String nombreEstacion2 = (String) ultimaEstacion.getSelectedItem();
             
             grafoApp.agregarConexion(nombreEstacion1, nombreEstacion2);
-            this.modificarComboBoxes();
+            this.ActualizarComboBox();
         }else{
-            JOptionPane.showMessageDialog(null, "No se puede realizar una conexion haci si mismo. La ciudad Inicio y Final deben ser diferentes.");
+            JOptionPane.showMessageDialog(null, "No se puede "
+                    + "conectar una estación con ella misma, "
+                    + "por favor escoger estaciones distintas ");
         }
     }//GEN-LAST:event_agregarAdyacenciaMouseClicked
 
@@ -268,9 +271,9 @@ public class AgregarLinea extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JComboBox<String> modelAdyacencia1;
-    private javax.swing.JComboBox<String> modelAdyacencia2;
     private javax.swing.JTextField nuevaEstacion;
+    private javax.swing.JComboBox<String> primeraEstacion;
+    private javax.swing.JComboBox<String> ultimaEstacion;
     // End of variables declaration//GEN-END:variables
    
 }
