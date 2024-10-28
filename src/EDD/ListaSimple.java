@@ -124,4 +124,18 @@ public class ListaSimple {
         // Retorna el resultado de la búsqueda
         return encontrado;
     }
+    
+    public String Transformar() {
+        if (!isEmpty()) {
+            Nodo aux = first;
+            StringBuilder expresion = new StringBuilder();
+            for (int i = 0; i < size; i++) {
+                // Aquí deberías evitar la recursión infinita, mostrando solo lo necesario
+                expresion.append(aux.getData().toString()).append("\n");
+                aux = aux.getnext();
+            }
+            return expresion.toString();
+        }
+        return "Lista vacia";
+    }
 }

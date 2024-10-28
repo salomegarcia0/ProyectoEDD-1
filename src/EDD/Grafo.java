@@ -96,7 +96,7 @@ public class Grafo {
      */
     
     public void agregarEstacion(Estacion estacion){
-        if(encontrarEstacion(estacion.getNombreEstacion())!= null){
+        if(encontrarEstacion(estacion.getNombreEstacion())== null){
             int idEstacion = this.estaciones.getSize();
             estacion.setIdEstacion(idEstacion);
             this.estaciones.aggFinal(estacion);
@@ -115,9 +115,12 @@ public class Grafo {
     * @param nombreEstacion El nombre de la estación que se desea agregar al grafo.
     */
     public void StringAggEstacion(String nombreEstacion){
-        Estacion nuevaEstacion = new Estacion(nombreEstacion);// Crea una nueva instancia de Estacion con el nombre proporcionado.
-        agregarEstacion(nuevaEstacion);// Llama al método para agregar la estación al grafo.
-        JOptionPane.showMessageDialog(null, "Estacion agregada satisfactoriamente.");// Muestra un mensaje de confirmación.
+        if(encontrarEstacion(nombreEstacion) == null){
+            Estacion nuevaEstacion = new Estacion(nombreEstacion);// Crea una nueva instancia de Estacion con el nombre proporcionado.
+            nuevaEstacion.setIdEstacion(this.estaciones.getSize());
+            agregarEstacion(nuevaEstacion);// Llama al método para agregar la estación al grafo.
+        }
+        
     }
     
     
@@ -141,8 +144,8 @@ public class Grafo {
         Estacion estacion2 = this.encontrarEstacion(nombreE2);
         
         if(sonEstacionesValidas(estacion1, estacion2)){
-            estacion1.getListaAdyacencia().aggFinal(estacion1);
-            estacion2.getListaAdyacencia().aggFinal(estacion2);
+            estacion1.getListaAdyacencia().aggFinal(estacion2);
+            estacion2.getListaAdyacencia().aggFinal(estacion1);
             
             JOptionPane.showMessageDialog(null, "Conexion establecida exitosamente");
         }else{
@@ -290,7 +293,7 @@ public class Grafo {
     public void eliminarSucursal(String nombreEstacion) {
         Estacion estacionParaEliminar = encontrarEstacion(nombreEstacion);// Busca la estación por su nombre.
         if (estacionParaEliminar != null) {
-            estacionParaEliminar.setHaySucursal(true);// Establece que la estación no tiene una sucursal.
+            estacionParaEliminar.setHaySucursal(false);// Establece que la estación no tiene una sucursal.
             JOptionPane.showMessageDialog(null, "Sucursal eliminada satisfactoriamente.");// Mensaje de confirmación.
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo eliminar la sucursal porque la estacion seleccionada no existe"); // Mensaje de error.
